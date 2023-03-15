@@ -1,6 +1,7 @@
 package dmikhaylov.qa.tests;
 
 import dmikhaylov.qa.base.BaseTest;
+import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.MethodSource;
 import java.util.List;
@@ -56,6 +57,27 @@ public class TinkoffCardsTest extends BaseTest {
         });
         step("Проверяем наличие кнопок второго меню в заголовке страницы дебетовых карт", () -> {
             debitCardsPage.verifySecondMainMenu(items);
+        });
+    }
+
+    @Test
+    public void shouldBeErrorSubmitingEmptyRequiredFielsTest() {
+        step("Открываем главную страницу сайта", () -> {
+            mainPage.openPage();
+        });
+        step("Клик по пункту меню Дебетовые карты", () -> {
+            mainPage.clickItemOnSecondMenu("Дебетовые карты");
+        });
+        step("Переходим на страницу с подродной информацией о карте Tinkoff Black", () -> {
+            debitCardsPage.clickMoreAboutCard("Дебетовая карта Tinkoff Black");
+        });
+        step("Не заполняя полей, нажимаем на кнопку Оформить", () -> {
+            tinkoffBlackPage.clickSubmitButton();
+        });
+        step("Проверяем, что появилась ошибка заполнения полей ФИО, телефон, дата рождения", () -> {
+            tinkoffBlackPage.checkOcurFioError()
+                    .checkOcurPhoneError()
+                    .checkOcurBirthdayError();
         });
     }
 }

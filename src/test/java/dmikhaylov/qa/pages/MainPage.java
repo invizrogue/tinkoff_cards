@@ -1,9 +1,7 @@
 package dmikhaylov.qa.pages;
 
-import dmikhaylov.qa.pages.components.CommonComponents;
-
 import java.util.List;
-
+import dmikhaylov.qa.pages.components.CommonComponents;
 import static com.codeborne.selenide.Selenide.open;
 
 public class MainPage {

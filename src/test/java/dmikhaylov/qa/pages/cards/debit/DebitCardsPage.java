@@ -1,8 +1,8 @@
 package dmikhaylov.qa.pages.cards.debit;
 
-import dmikhaylov.qa.pages.components.CommonComponents;
-
 import java.util.List;
+import dmikhaylov.qa.pages.components.CommonComponents;
+import static com.codeborne.selenide.Selenide.*;
 
 public class DebitCardsPage {
 
@@ -24,6 +24,14 @@ public class DebitCardsPage {
 
     public DebitCardsPage clickItemOnSecondMenu(String item) {
         common.clickItemOnMenu(1, item);
+        return this;
+    }
+
+    public DebitCardsPage clickMoreAboutCard(String cardName) {
+        $x("//p[text()='" + cardName
+                + "']/ancestor::div[@data-test='slideLink']/following-sibling::div//span[text()='Подробнее']").click();
+//        $(byText(cardName)).ancestor("div[data-test='slideLink']")
+//                .sibling(0).$(byText("Подробнее")).click();
         return this;
     }
 }
