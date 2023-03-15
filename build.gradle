@@ -9,7 +9,7 @@ version '1.0-SNAPSHOT'
 def allureVersion = "2.19.0",
         sl4jVersion = "2.0.6",
         junitVersion = "5.9.1",
-        selenideVersion="6.11.0",
+        selenideVersion="6.12.2",
         aspectjVersion = "1.9.9.1"
 
 allure {

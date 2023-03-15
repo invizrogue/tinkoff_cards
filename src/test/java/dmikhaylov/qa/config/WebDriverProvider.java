@@ -2,7 +2,6 @@ package dmikhaylov.qa.config;
 
 import com.codeborne.selenide.Configuration;
 import org.aeonbits.owner.ConfigFactory;
-import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.remote.DesiredCapabilities;
 
 public class WebDriverProvider {
@@ -31,13 +30,14 @@ public class WebDriverProvider {
         Configuration.browserCapabilities = capabilities;
         capabilities.setCapability("enableVNC", true);
         capabilities.setCapability("enableVideo", true);
-        if (config.getBrowserName().equalsIgnoreCase("chrome")) {
-            capabilities.setCapability(
-                    ChromeOptions.CAPABILITY,
-                    new ChromeOptions().addArguments("--remote-allow-origins=*")
-            );
-        }
 
-        System.out.println(Configuration.browserVersion);
+//      Для chromedriver==111 и selenide<6.12.2
+//        if (config.getBrowserName().equalsIgnoreCase("chrome")) {
+//            capabilities.setCapability(
+//                    ChromeOptions.CAPABILITY,
+//                    new ChromeOptions().addArguments("--remote-allow-origins=*")
+//            );
+//        }
+
     }
 }
